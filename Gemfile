@@ -51,6 +51,8 @@ gem 'gemini-ai', '~> 4.1.0'
 
 gem 'dotenv'
 
+gem 'react-rails', '~> 3.2', '>= 3.2.1'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
