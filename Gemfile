@@ -49,7 +49,7 @@ gem "bootsnap", require: false
 
 gem 'gemini-ai', '~> 4.1.0'
 
-gem 'dotenv'
+gem 'dotenv-rails'
 
 gem 'react-rails', '~> 3.2', '>= 3.2.1'
 
