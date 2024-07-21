@@ -9,9 +9,9 @@ class GeminiService
     )
   end
 
-  def get_response(message)
+  def get_response(message, question, answer)
     result = @client.stream_generate_content(
-      { contents: { role: 'user', parts: { text: "#{pronpt($random_question, $random_answer)}"+ message } } }
+      { contents: { role: 'user', parts: { text: "#{pronpt(question, answer)}"+ message } } }
     )
     data = result.first
     text = data['candidates'][0]['content']['parts'][0]['text']
@@ -30,8 +30,8 @@ def pronpt(question, answer)
     あなたは、水平思考クイズの出題者です。
     問題と解答は以下のとおりです。
 
-    問題：#{question.content}
-    解答：#{answer.content}
+    問題：#{question["content"]}
+    解答：#{answer["content"]}
 
     回答者から質問が来ますので、以下のルールで答えてください。
 

@@ -1,6 +1,9 @@
 class QuestionsController < ApplicationController
   def home
-    $random_question = Question.order('RANDOM()').first
-    $random_answer = $random_question.answers.order('RANDOM()').first
+    @question = Question.order('RANDOM()').first
+    @answer = @question.answers.order('RANDOM()').first
+
+    session[:current_question] = @question
+    session[:current_answer] = @answer
   end
 end
