@@ -1,3 +1,8 @@
-<h1>Questions#home</h1>
-<p>Find me in app/views/questions/home.html.erb</p>
-<%= react_component("App.js") %>
+<h1>Questions</h1>
+
+<p><%= $random_question.content %></p>
+<p><%= $random_answer.content %></p>
+
+<script>
+  react_component("App.js")
+</script>
