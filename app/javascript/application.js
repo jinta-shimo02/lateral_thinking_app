@@ -8,5 +8,8 @@ import ReactDOM from "react-dom";
 import App from "./components/App"; // Reactコンポーネントへのパス
 
 document.addEventListener("DOMContentLoaded", () => {
-    ReactDOM.render(<App />, document.body.appendChild(document.createElement("div")));
+    const root = document.getElementById("react-root");
+    if (root) {
+        ReactDOM.render(<App />, root);
+    }
 });
