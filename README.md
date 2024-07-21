@@ -15,3 +15,10 @@ docker compose up --build
 ```shell
 docker compose exec app rails db:prepare
 ```
+
+railsのサーバーのみ立ち上げ
+```shell
+※bin/devでrailsを立ち上げると、binding.irbなどでデバックできない問題について
+bin/dev -c all=1,web=0 でrails以外起動して、別ターミナルでbin/rails s すると、Procfile.devに書かれた内容のうち、webだけ切り分けて立ち上げることができる。
+こうすることで、rails sのターミナルでbinding.irbなどのデバックができるようになる。
+```
