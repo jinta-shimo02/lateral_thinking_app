@@ -9,10 +9,10 @@ class GeminiService
     )
   end
 
-  def set_questions_and_answers(questions, answers)
-    @questions = questions
-    @answers = answers
-  end
+  # def set_questions_and_answers(questions, answers)
+  #   @questions = questions
+  #   @answers = answers
+  # end
 
   def get_response(message)
     result = @client.stream_generate_content(
@@ -28,8 +28,8 @@ class GeminiService
       ※「はい」は、明確に正解と因果関係がある場合、「いいえ」は明確に正解と因果関係がない場合、「どちらでもよい」は「はい」にも「いいえ」にも当てはまらない場合に使います。
 
       お題と正解は下記です。
-      お題：#{@questions.content}
-      正解：#{@answers.content}
+      お題：#{$random_question.content}
+      正解：#{$random_answer.content}
       生徒からの質問：
       """+ message } } }
     )
