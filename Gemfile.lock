@@ -106,6 +106,9 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     dotenv (3.1.2)
+    dotenv-rails (3.1.2)
+      dotenv (= 3.1.2)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
     ethon (0.16.0)
@@ -301,7 +304,7 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   debug
-  dotenv
+  dotenv-rails
   gemini-ai (~> 4.1.0)
   jbuilder
   jsbundling-rails
