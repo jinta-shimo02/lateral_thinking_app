@@ -44,8 +44,8 @@ const Chat = () => {
             <h1>Chat</h1>
             <div
                 ref={chatContainerRef}
-                className="chat-container"
-                style={{ border: '1px solid #ccc', padding: '5% 10%', height: '500px', overflowY: 'scroll' }}
+                className="card bg-base-300 rounded-box h-50"
+                style={{ padding: '5% 10%', height: '500px', overflowY: 'scroll' }}
             >
                 {messages.map((msg, index) => (
                     <div key={index} className={msg.sender === 'user' ? "chat chat-end" : "chat chat-start" }>
@@ -79,7 +79,7 @@ const Chat = () => {
                     onChange={(e) => setInput(e.target.value)}
                     style={{ width: '80%', padding: '10px' }}
                 />
-                <button type="submit" style={{ width: '20%', padding: '10px' }}>
+                <button className="btn" style={{ width: '20%', padding: '10px' }}>
                     Send
                 </button>
             </form>
