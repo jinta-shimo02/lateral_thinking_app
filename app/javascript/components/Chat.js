@@ -41,7 +41,7 @@ const Chat = () => {
 
     return (
         <div>
-            <h1>Chat</h1>
+            <div className="divider" style={{ marginTop: '0%'}}></div>
             <div
                 ref={chatContainerRef}
                 className="card bg-base-300 rounded-box h-50"
