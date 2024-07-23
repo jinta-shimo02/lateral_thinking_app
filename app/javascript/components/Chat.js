@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 
 const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
+    const chatContainerRef = useRef(null);
 
     const sendMessage = async (message) => {
         try {
@@ -24,18 +25,28 @@ const Chat = () => {
         if (input.trim()) {
             const userMessage = { text: input, sender: 'user', timestamp: new Date().toLocaleTimeString() };
             setMessages(prevMessages => [...prevMessages, userMessage]);
+            setInput('');
 
             const botResponse = await sendMessage(input);
             const botMessage = { text: botResponse, sender: 'bot', timestamp: new Date().toLocaleTimeString() };
             setMessages(prevMessages => [...prevMessages, botMessage]);
-            setInput('');
         }
     };
+
+    useEffect(() => {
+        if (chatContainerRef.current) {
+            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+        }
+    }, [messages]);
 
     return (
         <div>
             <h1>Chat</h1>
-            <div className="chat-container" style={{ border: '1px solid #ccc', padding: '5% 10%', height: '500px', overflowY: 'scroll' }}>
+            <div
+                ref={chatContainerRef}
+                className="chat-container"
+                style={{ border: '1px solid #ccc', padding: '5% 10%', height: '500px', overflowY: 'scroll' }}
+            >
                 {messages.map((msg, index) => (
                     <div key={index} className={msg.sender === 'user' ? "chat chat-end" : "chat chat-start" }>
                         <div className="chat-image avatar">
@@ -61,15 +72,15 @@ const Chat = () => {
                     <span className="label-text">はいかいいえで答えられる質問をして答えをみつけよう！</span>
                 </div>
                 <input
-                type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                style={{ width: '80%', padding: '10px' }}
+                    type="text"
+                    placeholder="Type here"
+                    className="input input-bordered w-full"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    style={{ width: '80%', padding: '10px' }}
                 />
                 <button type="submit" style={{ width: '20%', padding: '10px' }}>
-                Send
+                    Send
                 </button>
             </form>
         </div>
