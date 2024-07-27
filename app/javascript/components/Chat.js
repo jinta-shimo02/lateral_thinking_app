@@ -72,25 +72,25 @@ const Chat = () => {
             <div
                 ref={chatContainerRef}
                 className="card bg-base-300 rounded-box h-50"
-                style={{ margin:'5px', padding: '35px 5% 5px 5%', height: '500px', overflowY: 'scroll' }}
+                style={{ margin:'5px', padding: '55px 5% 5px 5%', height: '500px', overflowY: 'scroll' }}
             >
                 {messages.map((msg, index) => (
                     <div key={index} className={msg.sender === 'user' ? "chat chat-end" : "chat chat-start" }>
                         <div className="chat-image avatar">
-                            <div className="w-10 rounded-full">
+                            <div className="w-10 rounded-md">
                                 <img
                                     alt="User avatar"
                                     src={msg.sender === 'user' 
-                                        ? "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" 
-                                        : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
+                                        ? "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKm1v1NZfQDYxjXhOJZxdGMzff1-pRVIojAUTzdapA4FySgjo0mcLaLhJ4fL1Q5BQmgp2_KDhbkx11TaNY3ijlMPkTbXnoWqfO6EzJzL6xnsuv8xYLXCe1NjUGccOIBO53FxX_HXXOkCM/s800/character_boy_normal.png"
+                                        : "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOHWHEL9dNUbI2eMnwby8Ox0s5qeHH48q6uRbEaNqIyUWvWdEf-l1h0HOMSNdzAIvdoQ5uD7ogp436pttIrMI4N63E-RPC6ySKqpT7gf3q8Z5IrR-kQH5NhFypQiupJc9XjnW5l85BLcg/s800/school_class_seifuku.png"}
                                 />
                             </div>
                         </div>
                         <div className="chat-header">
-                            {msg.sender === 'user' ? 'Anakin' : 'Obi-Wan Kenobi'}
+                            {msg.sender === 'user' ? 'あなた' : '解答'}
                             <time className="text-xs opacity-50">{msg.timestamp}</time>
                         </div>
-                        <div className="chat-bubble">{msg.text}</div>
+                        <div className="chat-bubble bg-secondary">{msg.text}</div>
                     </div>
                 ))}
             </div>
@@ -100,14 +100,14 @@ const Chat = () => {
                 </div>
                 <input
                     type="text"
-                    placeholder="Type here"
+                    placeholder="◯◯ですか？"
                     className="input input-bordered w-full"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     style={{ width: '80%', padding: '10px' }}
                 />
                 <button className="btn" style={{ width: '20%', padding: '10px' }}>
-                    Send
+                    送信
                 </button>
             </form>
         </div>

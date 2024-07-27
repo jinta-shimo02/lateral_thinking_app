@@ -1,6 +1,6 @@
-<div class="avatar flex justify-center mt-10 mb-10">
-  <div class="w-48 rounded-full">
-    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+<div class="avatar flex justify-center mt-10">
+  <div class="w-48">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOHWHEL9dNUbI2eMnwby8Ox0s5qeHH48q6uRbEaNqIyUWvWdEf-l1h0HOMSNdzAIvdoQ5uD7ogp436pttIrMI4N63E-RPC6ySKqpT7gf3q8Z5IrR-kQH5NhFypQiupJc9XjnW5l85BLcg/s800/school_class_seifuku.png" />
   </div>
 </div>
 
@@ -9,8 +9,15 @@
     <article class="prose">
       <h1 class="text-2xl font-bold m-2">問題</h1>
       <p class="py-6 m-2"><%= @question.content %></p>
-      <div class="card-actions justify-end">
-        <button class="btn btn-secondary" onclick="my_modal_1.showModal()">解答を見る</button>
+      <div class="flex justify-between">
+        <div class="card-actions">
+          <%= link_to home_path, class: "btn" do %>
+            <%= image_tag("reload_24.png", alt: "Reload") %>
+          <% end %>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-secondary" onclick="my_modal_1.showModal()">解答を見る</button>
+        </div>
       </div>
     </article>
   </div>
