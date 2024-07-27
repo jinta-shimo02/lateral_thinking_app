@@ -17,7 +17,7 @@ CSV.foreach("lib/questions/question.csv", headers: true) do |row|
   end
 
   if new_question.present?
-    (2..(count - 1)).each do |i|
+    (2..(count - 2)).each do |i|
       unless row[i].nil?
         Answer.create(content: row[i], question_id: new_question.id)
       end
