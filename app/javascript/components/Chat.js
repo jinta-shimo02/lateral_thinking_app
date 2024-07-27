@@ -45,7 +45,7 @@ const Chat = () => {
             <div
                 ref={chatContainerRef}
                 className="card bg-base-300 rounded-box h-50"
-                style={{ padding: '5% 10%', height: '500px', overflowY: 'scroll' }}
+                style={{ margin:'5px', padding: '5% 10%', height: '500px', overflowY: 'scroll' }}
             >
                 {messages.map((msg, index) => (
                     <div key={index} className={msg.sender === 'user' ? "chat chat-end" : "chat chat-start" }>
