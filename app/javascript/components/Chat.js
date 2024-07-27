@@ -2,11 +2,22 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
+import { useStopwatch } from 'react-timer-hook';
 
 const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
+    const [chatCount, setChatCount] = useState(0);
+    const [isTimerStarted, setIsTimerStarted] = useState(false);
     const chatContainerRef = useRef(null);
+
+    const {
+        seconds,
+        minutes,
+        hours,
+        start,
+        reset,
+    } = useStopwatch({ autoStart: false });
 
     const sendMessage = async (message) => {
         try {
@@ -26,6 +37,12 @@ const Chat = () => {
             const userMessage = { text: input, sender: 'user', timestamp: new Date().toLocaleTimeString() };
             setMessages(prevMessages => [...prevMessages, userMessage]);
             setInput('');
+
+            if (chatCount === 0) {
+                setStartTime(new Date());
+                setIsTimerStarted(true);
+            }
+            setChatCount(prevCount => prevCount + 1);
 
             const botResponse = await sendMessage(input);
             const botMessage = { text: botResponse, sender: 'bot', timestamp: new Date().toLocaleTimeString() };
@@ -47,6 +64,10 @@ const Chat = () => {
                 className="card bg-base-300 rounded-box h-50"
                 style={{ margin:'5px', padding: '5% 10%', height: '500px', overflowY: 'scroll' }}
             >
+            <div style={{ margin: '10px' }}>
+                <p>チャット回数: {chatCount} 回</p>
+                <p>経過時間: {`${hours}時間${minutes}分${seconds}秒`}</p>
+            </div>
                 {messages.map((msg, index) => (
                     <div key={index} className={msg.sender === 'user' ? "chat chat-end" : "chat chat-start" }>
                         <div className="chat-image avatar">
