@@ -16,7 +16,6 @@ const Chat = () => {
         minutes,
         hours,
         start,
-        reset,
     } = useStopwatch({ autoStart: false });
 
     const sendMessage = async (message) => {
@@ -39,8 +38,7 @@ const Chat = () => {
             setInput('');
 
             if (chatCount === 0) {
-                setStartTime(new Date());
-                setIsTimerStarted(true);
+                start();
             }
             setChatCount(prevCount => prevCount + 1);
 
@@ -57,17 +55,25 @@ const Chat = () => {
     }, [messages]);
 
     return (
-        <div>
+        <div style={{position: 'relative'}}>
             <div className="divider" style={{ marginTop: '0%'}}></div>
+            <div className="stats-container" style={{ zIndex: '1', position: 'absolute', width: '100%', padding: '0 2px', justifyContent: 'center' }}>
+                <div className="stats lg:stats-horizontal shadow" style={{ display: 'flex', width: '95%', justifyContent: 'space-around', margin: '5px auto' }}>
+                    <div className="stat horizontal" style={{ display: 'flex', alignItems: 'center' }}>
+                        <div className="stat-title text-sm">チャット回数</div>
+                        <div className="stat-value text-primary text-sm" style={{ marginLeft: '2px' }}>{chatCount} 回</div>
+                    </div>
+                    <div className="stat horizontal" style={{ display: 'flex', alignItems: 'center' }}>
+                        <div className="stat-title text-sm">経過時間</div>
+                        <div className="stat-value text-primary text-sm" style={{ marginLeft: '2px' }}>{`${hours}時間${minutes}分${seconds}秒`}</div>
+                    </div>
+                </div>
+            </div>
             <div
                 ref={chatContainerRef}
                 className="card bg-base-300 rounded-box h-50"
-                style={{ margin:'5px', padding: '5% 10%', height: '500px', overflowY: 'scroll' }}
+                style={{ margin:'5px', padding: '35px 5% 5px 5%', height: '500px', overflowY: 'scroll' }}
             >
-            <div style={{ margin: '10px' }}>
-                <p>チャット回数: {chatCount} 回</p>
-                <p>経過時間: {`${hours}時間${minutes}分${seconds}秒`}</p>
-            </div>
                 {messages.map((msg, index) => (
                     <div key={index} className={msg.sender === 'user' ? "chat chat-end" : "chat chat-start" }>
                         <div className="chat-image avatar">
