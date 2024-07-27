@@ -3,8 +3,10 @@
     <%= image_tag 'top_page.png' %>
     <p class="text-center text-customBrown font-bold text-lg lg:text-xl italic tracking-wide mt-10">物事を多様に捉えてクイズに答えよう！</p>
   </div>
-  <div class="mt-20">
-    <%= link_to "クイズを始める", home_path, class: "btn btn-secondary py-4 px-10" %>
+  <div class="flex justify-around mt-20">
+      <%= link_to "初級編", home_path(level: :easy), class: "btn btn-secondary py-4 px-10" %>
+      <%= link_to "中級編", home_path(level: :normal), class: "btn btn-secondary py-4 px-10" %>
+      <%= link_to "上級編", home_path(level: :difficult), class: "btn btn-secondary py-4 px-10" %>
   </div>
   <div class="container mx-auto py-4 text-sm mt-20 flex flex-col justify-center items-center">
       <div class="text-center w-5/6 border-gray-400 border-y-2 py-10 mb-5">
@@ -22,8 +24,10 @@
   <div>
     <p class="text-3xl mb-20">ここに完成したチャットのスクショか動画でも貼って、やり方を見せるといいかなと</p>
   </div>
-  <div class="mb-20">
-    <%= link_to "クイズを始める", home_path, class: "btn btn-secondary py-4 px-10" %>
+  <div class="flex justify-around mb-20">
+      <%= link_to "初級編", home_path(level: :easy), class: "btn btn-secondary py-4 px-10" %>
+      <%= link_to "中級編", home_path(level: :normal), class: "btn btn-secondary py-4 px-10" %>
+      <%= link_to "上級編", home_path(level: :difficult), class: "btn btn-secondary py-4 px-10" %>
   </div>
 </div>
 
