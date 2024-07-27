@@ -19,18 +19,25 @@
     <%= image_tag 'logo.png', class: 'w-64 h-32' %>
   </div>
   <div class="navbar-end">
-    <button class="btn btn-ghost">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 25 25"
-        class="inline-block h-10 w-10 stroke-current">
-        <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
+    <div class="dropdown dropdown-bottom dropdown-end">
+      <div tabindex="0" role="button" class="btn m-1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 25 25"
+          class="inline-block h-10 w-10 stroke-current">
+          <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+        <li><%= link_to "初級編", home_path(level: :easy) %></li>
+        <li><%= link_to "中級編", home_path(level: :normal)%></li>
+        <li><%= link_to "上級編", home_path(level: :difficult)%></li>
+      </ul>
+    </div>
   </div>
 </div>
