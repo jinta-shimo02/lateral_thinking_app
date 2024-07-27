@@ -3,13 +3,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import { useStopwatch } from 'react-timer-hook';
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
 const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
     const [chatCount, setChatCount] = useState(0);
-    const [isTimerStarted, setIsTimerStarted] = useState(false);
+    const [showConfetti, setShowConfetti] = useState(false);
     const chatContainerRef = useRef(null);
+    const { width, height } = useWindowSize()
 
     const {
         seconds,
@@ -45,6 +48,14 @@ const Chat = () => {
             const botResponse = await sendMessage(input);
             const botMessage = { text: botResponse, sender: 'bot', timestamp: new Date().toLocaleTimeString() };
             setMessages(prevMessages => [...prevMessages, botMessage]);
+
+            // コンフェッティの表示条件
+            if (botResponse === "正解です！") {
+                setShowConfetti(true);
+                setTimeout(() => {
+                    setShowConfetti(false);
+                }, 3000); // 3秒間表示
+            }
         }
     };
 
@@ -110,6 +121,15 @@ const Chat = () => {
                     送信
                 </button>
             </form>
+            {showConfetti && (
+                <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+                    <Confetti
+                        width={width}
+                        height={height}
+                        recycle={false}
+                    />
+                </div>
+            )}
         </div>
     );
 };
