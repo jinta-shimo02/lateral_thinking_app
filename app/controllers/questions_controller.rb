@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   def home
+    puts params[:level]
     @question = Question.where(level: params[:level]).order('RANDOM()').first
     @answer = @question.answers.order('RANDOM()').first
 

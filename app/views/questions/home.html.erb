@@ -1,17 +1,11 @@
-<div class="avatar flex justify-center mt-10">
-  <div class="w-48">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOHWHEL9dNUbI2eMnwby8Ox0s5qeHH48q6uRbEaNqIyUWvWdEf-l1h0HOMSNdzAIvdoQ5uD7ogp436pttIrMI4N63E-RPC6ySKqpT7gf3q8Z5IrR-kQH5NhFypQiupJc9XjnW5l85BLcg/s800/school_class_seifuku.png" />
-  </div>
-</div>
-
-<div class="flex justify-center items-center p-4">
-  <div class="card bg-base-100 w-full max-w-md md:max-w-lg lg:max-w-xl shadow-xl mx-4 p-4">
+<div class="flex justify-center my-10">
+  <div class="card bg-base-100 w-full max-w-md md:max-w-lg lg:max-w-xl shadow-xl mx-2 p-4">
     <article class="prose">
       <h1 class="text-2xl font-bold m-2">問題</h1>
       <p class="py-6 m-2"><%= @question.content %></p>
       <div class="flex justify-between">
         <div class="card-actions">
-          <%= link_to home_path, class: "btn" do %>
+          <%= link_to home_path(level: params[:level]), class: "btn" do %>
             <%= image_tag("reload_24.png", alt: "Reload") %>
           <% end %>
         </div>
@@ -21,6 +15,11 @@
       </div>
     </article>
   </div>
+
+  <div class="w-64">
+    <%= image_tag "labbit_1.png"%>
+  </div>
+
 </div>
 
 <dialog id="my_modal_1" class="modal">

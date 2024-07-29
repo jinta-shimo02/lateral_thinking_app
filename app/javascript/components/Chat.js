@@ -88,17 +88,17 @@ const Chat = () => {
                 {messages.map((msg, index) => (
                     <div key={index} className={msg.sender === 'user' ? "chat chat-end" : "chat chat-start" }>
                         <div className="chat-image avatar">
-                            <div className="w-10 rounded-md">
+                            <div className="w-16 h-16 rounded-full mt-4">
                                 <img
                                     alt="User avatar"
                                     src={msg.sender === 'user' 
-                                        ? "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKm1v1NZfQDYxjXhOJZxdGMzff1-pRVIojAUTzdapA4FySgjo0mcLaLhJ4fL1Q5BQmgp2_KDhbkx11TaNY3ijlMPkTbXnoWqfO6EzJzL6xnsuv8xYLXCe1NjUGccOIBO53FxX_HXXOkCM/s800/character_boy_normal.png"
-                                        : "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOHWHEL9dNUbI2eMnwby8Ox0s5qeHH48q6uRbEaNqIyUWvWdEf-l1h0HOMSNdzAIvdoQ5uD7ogp436pttIrMI4N63E-RPC6ySKqpT7gf3q8Z5IrR-kQH5NhFypQiupJc9XjnW5l85BLcg/s800/school_class_seifuku.png"}
+                                        ? "assets/turtle.png"
+                                        : "assets/labbit_2.png"}
                                 />
                             </div>
                         </div>
                         <div className="chat-header">
-                            {msg.sender === 'user' ? 'あなた' : '解答'}
+                            {msg.sender === 'user' ? 'あなた' : '出題者'}
                             <time className="text-xs opacity-50">{msg.timestamp}</time>
                         </div>
                         <div className="chat-bubble bg-secondary">{msg.text}</div>
@@ -106,19 +106,19 @@ const Chat = () => {
                 ))}
             </div>
             <form onSubmit={handleSubmit} style={{ margin: '10px' }}>
-                <div className="label">
-                    <span className="label-text">はいかいいえで答えられる質問をして答えをみつけよう！</span>
+                <div className="label mt-4">
+                    <span className="label-text text-base ">はいかいいえで答えられる質問をして答えをみつけよう！</span>
                 </div>
                 <input
                     type="text"
                     placeholder="◯◯ですか？"
-                    className="input input-bordered w-full"
+                    className="input input-bordered border-2 w-full my-4"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     style={{ width: '80%', padding: '10px' }}
                 />
-                <button className="btn" style={{ width: '20%', padding: '10px' }}>
-                    送信
+                <button className="btn btn-secondary" style={{ width: '20%', padding: '10px' }}>
+                    質問する
                 </button>
             </form>
             {showConfetti && (
